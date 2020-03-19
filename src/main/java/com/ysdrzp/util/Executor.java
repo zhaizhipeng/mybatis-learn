@@ -1,6 +1,7 @@
-package com.ysdrzp.easy;
+package com.ysdrzp.util;
 
 import com.mysql.jdbc.PreparedStatement;
+import com.ysdrzp.easy.Mapper;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
@@ -12,10 +13,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 执行器
+ * 执行器：负责执行 sql 语句， 完成结果封装
  */
 public class Executor {
 
+    /**
+     * 执行查询语句
+     * @param mapper
+     * @param conn
+     * @param <E>
+     * @return
+     */
     public <E> List<E> selectList(Mapper mapper, Connection conn) {
         PreparedStatement pstm = null;
         ResultSet rs = null;

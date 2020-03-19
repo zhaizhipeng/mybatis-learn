@@ -6,11 +6,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 /**
- *
+ * 数据库管理
  */
 public class DataSourceUtil {
-
-
 
     /**
      * 获取连接

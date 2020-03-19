@@ -43,9 +43,9 @@ public class DefaultSqlSession implements SqlSession {
      * 涉及的类：Proxy
      * 使用的方法：newProxyInstance
      * 方法的参数：
-     * ClassLoader：和被代理对象使用相同的类加载器,通常都是固定的
-     * Class[]：代理对象和被代理对象要求有相同的行为。（具有相同的方法）
-     * InvocationHandler：如何代理。需要我们自己提供的增强部分的代码
+     *      ClassLoader：和被代理对象使用相同的类加载器,通常都是固定的。
+     *      Class[]：代理对象和被代理对象要求有相同的行为。
+     *      InvocationHandler：如何代理。需要我们自己提供的增强部分的代码。
      */
     @Override
     public <T> T getMapper(Class<T> daoClass) {
@@ -62,13 +62,4 @@ public class DefaultSqlSession implements SqlSession {
             e.printStackTrace();
         }
     }
-
-    /**
-     * 查询所有方法
-     */
-    /*public <E> List<E> selectList(String statement){
-        Mapper mapper = cfg.getMappers().get(statement);
-        return new Executor().selectList(mapper,conn);
-    }*/
-
 }

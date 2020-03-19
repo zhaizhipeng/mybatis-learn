@@ -16,5 +16,4 @@ public class Resources {
     public static InputStream getResourceAsStream(String xmlPath) {
         return Resources.class.getClassLoader().getResourceAsStream(xmlPath);
     }
-
 }

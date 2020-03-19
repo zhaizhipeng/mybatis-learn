@@ -19,9 +19,7 @@
 
     <!-- 告知 mybatis 映射配置的位置 -->
     <mappers>
-<!--
         <mapper resource="com/ysdrzp/dao/IUserDao.xml"/>
--->
         <mapper class ="com.ysdrzp.dao.IPersonDao"/>
     </mappers>
 

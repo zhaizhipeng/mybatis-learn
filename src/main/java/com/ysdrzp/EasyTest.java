@@ -37,5 +37,4 @@ public class EasyTest {
         session.close();
         in.close();
     }
-
 }
