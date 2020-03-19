@@ -6,11 +6,11 @@
         type 属性：指定实体类的全限定类名
         id 属性：给定一个唯一标识，是给查询 select 标签引用用的。-->
     <resultMap type="com.ysdrzp.model.User" id="userMap">
-        <id column="id" property="userId"/>
+        <id column="id" property="id"/>
         <result column="username" property="userName"/>
-        <result column="sex" property="userSex"/>
-        <result column="address" property="userAddress"/>
-        <result column="birthday" property="userBirthday"/>
+        <result column="sex" property="sex"/>
+        <result column="address" property="address"/>
+        <result column="birthday" property="birthday"/>
     </resultMap>
 
     <!-- 配置查询所有操作 -->
@@ -35,12 +35,12 @@
             select last_insert_id();
         </selectKey>
         insert into user(username,birthday,sex,address)
-        values(#{username},#{birthday},#{sex},#{address})
+        values(#{userName},#{birthday},#{sex},#{address})
     </insert>
 
     <!-- 更新用户 -->
     <update id="updateUser" parameterType="com.ysdrzp.model.User">
-        update user set username = #{username},birthday = #{birthday},sex = #{sex},
+        update user set username = #{userName},birthday = #{birthday},sex = #{sex},
         address = #{address} where id = #{id}
     </update>
 

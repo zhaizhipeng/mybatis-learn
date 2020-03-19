@@ -34,9 +34,9 @@ public class MybatisCRUDTest {
     public void testSave(){
         User user = new User();
         user.setUserName("modify User property");
-        user.setUserAddress("北京市顺义区");
-        user.setUserSex("男");
-        user.setUserBirthday(new Date());
+        user.setAddress("北京市顺义区");
+        user.setSex("男");
+        user.setBirthday(new Date());
         System.out.println("保存操作之前："+user);
         int count = userDao.saveUser(user);
         System.out.println("count:" + count);
@@ -46,7 +46,7 @@ public class MybatisCRUDTest {
     @Test
     public void testUpdateUser()throws Exception{
         User user = userDao.findById(52);
-        user.setUserAddress("北京市顺义区");
+        user.setAddress("北京市顺义区");
         int res = userDao.updateUser(user);
         System.out.println(res);
     }
@@ -91,7 +91,7 @@ public class MybatisCRUDTest {
         }
     }
 
-    @Before//在测试方法执行之前执行
+    @Before
     public void init()throws Exception {
         //1.读取配置文件
         in = Resources.getResourceAsStream("SqlMapConfig.xml");
@@ -105,7 +105,7 @@ public class MybatisCRUDTest {
         userDao = session.getMapper(IUserDao.class);
     }
 
-    @After//在测试方法执行完成之后执行
+    @After
     public void destroy() throws Exception{
         session.commit();
         //7.释放资源

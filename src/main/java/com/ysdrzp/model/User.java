@@ -8,59 +8,65 @@ import java.util.Date;
  */
 public class User implements Serializable {
 
-    private Integer userId;
+    private Integer id;
 
     private String userName;
 
-    private Date userBirthday;
+    private Date birthday;
 
-    private String userSex;
+    private String sex;
 
-    private String userAddress;
+    private String address;
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getUserName() {
         return userName;
     }
+
     public void setUserName(String userName) {
         this.userName = userName;
     }
 
-    public Date getUserBirthday() {
-        return userBirthday;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public void setUserBirthday(Date userBirthday) {
-        this.userBirthday = userBirthday;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
-    public String getUserSex() {
-        return userSex;
+    public String getSex() {
+        return sex;
     }
 
-    public void setUserSex(String userSex) {
-        this.userSex = userSex;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
-    public String getUserAddress() {
-        return userAddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
     public String toString() {
-        return "User [userId=" + userId + ", userName=" + userName + ", userBirthday="
-                + userBirthday + ", userSex="
-                + userSex + ", userAddress=" + userAddress + "]";
+        return "User{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", birthday=" + birthday +
+                ", sex='" + sex + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
+
 }
