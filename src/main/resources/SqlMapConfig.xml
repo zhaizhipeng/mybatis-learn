@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+    <!-- 属性配置：方式一 -->
+    <!--<properties>
+        <property name="jdbc.driver" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbc.url" value="jdbc:mysql://localhost:3306/ysdrzp"/>
+        <property name="jdbc.username" value="root"/>
+        <property name="jdbc.password" value="root"/>
+    </properties>-->
+
+    <properties resource="db.properties"></properties>
+
+    <typeAliases>
+        <!-- 单个别名定义 -->
+        <typeAlias alias="user" type="com.ysdrzp.model.User"/>
+        <!-- 批量别名定义，扫描整个包下的类，别名为类名（首字母大写或小写都可以） -->
+        <package name="com.ysdrzp.model"/>
+    </typeAliases>
+
     <!-- 配置 mybatis 的环境 -->
     <environments default="mysql">
         <!-- 配置 mysql 的环境 -->
@@ -9,10 +27,10 @@
             <transactionManager type="JDBC"></transactionManager>
             <!-- 配置连接数据库的信息：用的是数据源(连接池) -->
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/ysdrzp"/>
-                <property name="username" value="root"/>
-                <property name="password" value="root"/>
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
     </environments>

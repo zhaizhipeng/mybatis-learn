@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class MybatisCRUDTest {
 
     @Test
     public void testUpdateUser()throws Exception{
-        User user = userDao.findById(52);
+        User user = userDao.findById(1);
         user.setAddress("北京市顺义区");
         int res = userDao.updateUser(user);
         System.out.println(res);
@@ -91,6 +92,35 @@ public class MybatisCRUDTest {
         }
     }
 
+    @Test
+    public void testFindByUser() {
+        User u = new User();
+        u.setUserName("%王%");
+        u.setAddress("%顺义%");
+        //6.执行操作
+        List<User> users = userDao.findByUser(u);
+        for(User user : users) {
+            System.out.println(user);
+        }
+    }
+
+    @Test
+    public void testFindInIds() {
+        QueryVo vo = new QueryVo();
+        List<Integer> ids = new ArrayList<Integer>();
+        ids.add(41);
+        ids.add(42);
+        ids.add(43);
+        ids.add(46);
+        ids.add(57);
+        vo.setIds(ids);
+        //6.执行操作
+        List<User> users = userDao.findInIds(vo);
+        for(User user : users) {
+            System.out.println(user);
+        }
+    }
+
     @Before
     public void init()throws Exception {
         //1.读取配置文件
@@ -100,7 +130,7 @@ public class MybatisCRUDTest {
         //3.创建 SqlSession 工厂对象
         factory = builder.build(in);
         //4.创建 SqlSession 对象
-        session = factory.openSession();
+        session = factory.openSession(true);
         //5.创建 Dao 的代理对象
         userDao = session.getMapper(IUserDao.class);
     }
