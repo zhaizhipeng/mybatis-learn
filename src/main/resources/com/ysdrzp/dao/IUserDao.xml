@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysdrzp.dao.IUserDao">
+
+    <!-- 配置查询所有操作 -->
+    <select id="findAll" resultType="com.ysdrzp.model.User">
+        select * from user
+    </select>
+
+    <!-- 根据 id 查询 -->
+    <select id="findById" resultType="com.ysdrzp.model.User" parameterType="int">
+        select * from user where id = #{uid}
+    </select>
+
+    <!-- 保存用户-->
+    <!--<insert id="saveUser" parameterType="com.ysdrzp.model.User">
+        insert into user(username,birthday,sex,address)
+        values(#{username},#{birthday},#{sex},#{address})
+    </insert>-->
+
+    <insert id="saveUser" parameterType="com.ysdrzp.model.User">
+        <!-- 配置保存时获取插入的 id -->
+        <selectKey keyColumn="id" keyProperty="id" resultType="int">
+            select last_insert_id();
+        </selectKey>
+        insert into user(username,birthday,sex,address)
+        values(#{username},#{birthday},#{sex},#{address})
+    </insert>
+
+    <!-- 更新用户 -->
+    <update id="updateUser" parameterType="com.ysdrzp.model.User">
+        update user set username = #{username},birthday = #{birthday},sex = #{sex},
+        address = #{address} where id = #{id}
+    </update>
+
+    <!-- 删除用户 -->
+    <delete id="deleteUser" parameterType="java.lang.Integer">
+        delete from user where id = #{uid}
+    </delete>
+
+    <!-- 根据名称模糊查询 -->
+    <!--<select id="findByName" resultType="com.ysdrzp.model.User" parameterType="String">
+        select * from user where username like #{username}
+    </select>-->
+
+    <!-- 根据名称模糊查询 -->
+    <select id="findByName" parameterType="string" resultType="com.ysdrzp.model.User">
+        select * from user where username like '%${value}%'
+    </select>
+
+    <!-- 查询总记录条数 -->
+    <select id="findTotal" resultType="int">
+        select count(*) from user;
+    </select>
+
+</mapper>

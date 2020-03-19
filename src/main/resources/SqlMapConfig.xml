@@ -20,7 +20,7 @@
 
     <!-- 告知 mybatis 映射配置的位置 -->
     <mappers>
-        <mapper class="com.ysdrzp.dao.IUserDao"/>
+        <mapper resource="com/ysdrzp/dao/IUserDao.xml"/>
     </mappers>
 
 </configuration>
