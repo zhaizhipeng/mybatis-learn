@@ -1,4 +1,5 @@
 import com.ysdrzp.dao.IUserDao;
+import com.ysdrzp.model.QueryVo;
 import com.ysdrzp.model.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -32,10 +33,10 @@ public class MybatisCRUDTest {
     @Test
     public void testSave(){
         User user = new User();
-        user.setUsername("modify User property");
-        user.setAddress("北京市顺义区");
-        user.setSex("男");
-        user.setBirthday(new Date());
+        user.setUserName("modify User property");
+        user.setUserAddress("北京市顺义区");
+        user.setUserSex("男");
+        user.setUserBirthday(new Date());
         System.out.println("保存操作之前："+user);
         int count = userDao.saveUser(user);
         System.out.println("count:" + count);
@@ -45,7 +46,7 @@ public class MybatisCRUDTest {
     @Test
     public void testUpdateUser()throws Exception{
         User user = userDao.findById(52);
-        user.setAddress("北京市顺义区");
+        user.setUserAddress("北京市顺义区");
         int res = userDao.updateUser(user);
         System.out.println(res);
     }
@@ -65,9 +66,29 @@ public class MybatisCRUDTest {
     }
 
     @Test
-    public void testFindTotal() throws Exception {
+    public void testFindTotal() {
         int res = userDao.findTotal();
         System.out.println(res);
+    }
+
+    @Test
+    public void testFindByQueryVo() {
+        QueryVo vo = new QueryVo();
+        User user = new User();
+        user.setUserName("小");
+        vo.setUser(user);
+        List<User> users = userDao.findByVo(vo);
+        for(User u : users) {
+            System.out.println(u);
+        }
+    }
+
+    @Test
+    public void testFindAll() {
+        List<User> users = userDao.findAll();
+        for(User user : users) {
+            System.out.println(user);
+        }
     }
 
     @Before//在测试方法执行之前执行

@@ -1,5 +1,6 @@
 package com.ysdrzp.dao;
 
+import com.ysdrzp.model.QueryVo;
 import com.ysdrzp.model.User;
 import org.apache.ibatis.annotations.Select;
 
@@ -56,4 +57,11 @@ public interface IUserDao {
      * @return
      */
     int findTotal();
+
+    /**
+     * 根据 QueryVo 中的条件查询用户
+     * @param vo
+     * @return
+     */
+    List<User> findByVo(QueryVo vo);
 }
