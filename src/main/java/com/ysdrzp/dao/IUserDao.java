@@ -2,8 +2,6 @@ package com.ysdrzp.dao;
 
 import com.ysdrzp.model.QueryVo;
 import com.ysdrzp.model.User;
-import org.apache.ibatis.annotations.Select;
-
 import java.util.List;
 
 /**
