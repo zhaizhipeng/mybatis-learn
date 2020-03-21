@@ -1,21 +1,5 @@
-import com.ysdrzp.dao.IAccountDao;
 import com.ysdrzp.dao.IRoleDao;
-import com.ysdrzp.model.Account;
 import com.ysdrzp.model.Role;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import java.io.InputStream;
-import java.util.List;
-
-import com.ysdrzp.dao.IAccountDao;
-import com.ysdrzp.model.Account;
-import com.ysdrzp.model.AccountUser;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

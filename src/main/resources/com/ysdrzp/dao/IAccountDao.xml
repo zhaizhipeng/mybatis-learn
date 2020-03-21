@@ -8,11 +8,11 @@
     </select>-->
 
     <!-- 建立对应关系 -->
-    <resultMap type="account" id="accountMap">
+    <!--<resultMap type="account" id="accountMap">
         <id column="aid" property="id"/>
         <result column="uid" property="uid"/>
         <result column="money" property="money"/>
-        <!-- 它是用于指定从表方的引用实体属性的 -->
+        &lt;!&ndash; 它是用于指定从表方的引用实体属性的 &ndash;&gt;
         <association property="user" javaType="user">
             <id column="id" property="id"/>
             <result column="username" property="userName"/>
@@ -20,10 +20,24 @@
             <result column="birthday" property="birthday"/>
             <result column="address" property="address"/>
         </association>
+    </resultMap>-->
+
+    <!--<select id="findAll" resultMap="accountMap">
+        select u.*,a.id as aid,a.uid,a.money from account a,user u where a.uid =u.id;
+    </select>-->
+
+    <!-- 建立对应关系 -->
+    <resultMap type="account" id="accountMap">
+        <id column="aid" property="id"/>
+        <result column="uid" property="uid"/>
+        <result column="money" property="money"/>
+        <!-- 它是用于指定从表方的引用实体属性的 -->
+        <association property="user" javaType="user" select="com.ysdrzp.dao.IUserDao.findById" column="uid">
+        </association>
     </resultMap>
 
     <select id="findAll" resultMap="accountMap">
-        select u.*,a.id as aid,a.uid,a.money from account a,user u where a.uid =u.id;
+        select * from account
     </select>
 
 </mapper>

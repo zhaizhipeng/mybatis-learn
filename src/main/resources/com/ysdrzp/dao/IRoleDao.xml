@@ -4,7 +4,7 @@
 
     <!--定义 role 表的 ResultMap-->
     <resultMap id="roleMap" type="role">
-        <id property="roleId" column="rid"></id>
+        <id property="roleId" column="id"></id>
         <result property="roleName" column="role_name"></result>
         <result property="roleDesc" column="role_desc"></result>
         <collection property="users" ofType="user">

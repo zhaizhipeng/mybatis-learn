@@ -34,10 +34,6 @@ public class AccountTest {
     @Test
     public void testFindAll() {
         List<Account> accounts = accountDao.findAll();
-        for (Account au : accounts) {
-            System.out.println(au);
-            System.out.println(au.getUser());
-        }
     }
 
     @Before
