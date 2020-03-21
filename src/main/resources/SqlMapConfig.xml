@@ -40,6 +40,7 @@
         <mapper resource="com/ysdrzp/dao/IUserDao.xml"/>
         <!--<mapper class ="com.ysdrzp.dao.IPersonDao"/>-->
         <mapper resource="com/ysdrzp/dao/IAccountDao.xml"/>
+        <mapper resource="com/ysdrzp/dao/IRoleDao.xml"/>
     </mappers>
 
 </configuration>
