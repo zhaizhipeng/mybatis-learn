@@ -2,6 +2,7 @@ package com.ysdrzp.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 用户实体类
@@ -17,6 +18,16 @@ public class User implements Serializable {
     private String sex;
 
     private String address;
+
+    private List<Account> accounts;
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+    }
 
     public Integer getId() {
         return id;
@@ -66,7 +77,7 @@ public class User implements Serializable {
                 ", birthday=" + birthday +
                 ", sex='" + sex + '\'' +
                 ", address='" + address + '\'' +
+                ", accounts=" + accounts +
                 '}';
     }
-
 }

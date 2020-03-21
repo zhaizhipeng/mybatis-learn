@@ -5,17 +5,38 @@
     <!-- 建立 User 实体和数据库表的对应关系
         type 属性：指定实体类的全限定类名
         id 属性：给定一个唯一标识，是给查询 select 标签引用用的。-->
-    <resultMap type="user" id="userMap">
+    <!--<resultMap type="user" id="userMap">
         <id column="id" property="id"/>
         <result column="username" property="userName"/>
         <result column="sex" property="sex"/>
         <result column="address" property="address"/>
         <result column="birthday" property="birthday"/>
+    </resultMap>-->
+
+    <!-- 配置查询所有操作 -->
+    <!--<select id="findAll" resultMap="userMap">
+        select * from user
+    </select>-->
+
+    <resultMap type="user" id="userMap">
+        <id column="id" property="id"></id>
+        <result column="username" property="userName"/>
+        <result column="address" property="address"/>
+        <result column="sex" property="sex"/>
+        <result column="birthday" property="birthday"/>
+        <!-- collection 是用于建立一对多中集合属性的对应关系
+        ofType 用于指定集合元素的数据类型
+        -->
+        <collection property="accounts" ofType="account">
+            <id column="aid" property="id"/>
+            <result column="uid" property="uid"/>
+            <result column="money" property="money"/>
+        </collection>
     </resultMap>
 
     <!-- 配置查询所有操作 -->
     <select id="findAll" resultMap="userMap">
-        select * from user
+        select u.*,a.id as aid ,a.uid,a.money from user u left outer join account a on u.id =a.uid
     </select>
 
     <!-- 根据 id 查询 -->
