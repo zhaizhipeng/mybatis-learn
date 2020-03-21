@@ -40,4 +40,9 @@
         select * from account
     </select>
 
+    <!-- 根据用户 id 查询账户信息 -->
+    <select id="findByUid" resultType="account" parameterType="int">
+        select * from account where uid = #{uid}
+    </select>
+
 </mapper>

@@ -26,18 +26,40 @@
         <result column="birthday" property="birthday"/>
         <!-- collection 是用于建立一对多中集合属性的对应关系
         ofType 用于指定集合元素的数据类型
+        select 是用于指定查询账户的唯一标识（账户的 dao 全限定类名加上方法名称）
+        column 是用于指定使用哪个字段的值作为条件查询
         -->
-        <collection property="accounts" ofType="account">
-            <id column="aid" property="id"/>
-            <result column="uid" property="uid"/>
-            <result column="money" property="money"/>
+        <collection property="accounts" ofType="account"
+                    select="com.ysdrzp.dao.IAccountDao.findByUid"
+                    column="id">
         </collection>
     </resultMap>
 
     <!-- 配置查询所有操作 -->
     <select id="findAll" resultMap="userMap">
-        select u.*,a.id as aid ,a.uid,a.money from user u left outer join account a on u.id =a.uid
+        select * from user
     </select>
+
+    <!--<resultMap type="user" id="userMap">
+        <id column="id" property="id"></id>
+        <result column="username" property="userName"/>
+        <result column="address" property="address"/>
+        <result column="sex" property="sex"/>
+        <result column="birthday" property="birthday"/>
+        &lt;!&ndash; collection 是用于建立一对多中集合属性的对应关系
+        ofType 用于指定集合元素的数据类型
+        &ndash;&gt;
+        <collection property="accounts" ofType="account">
+            <id column="aid" property="id"/>
+            <result column="uid" property="uid"/>
+            <result column="money" property="money"/>
+        </collection>
+    </resultMap>-->
+
+    <!-- 配置查询所有操作 -->
+    <!--<select id="findAll" resultMap="userMap">
+        select u.*,a.id as aid ,a.uid,a.money from user u left outer join account a on u.id =a.uid
+    </select>-->
 
     <!-- 根据 id 查询 -->
     <select id="findById" resultType="user" parameterType="int">

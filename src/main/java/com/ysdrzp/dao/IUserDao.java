@@ -1,5 +1,6 @@
 package com.ysdrzp.dao;
 
+import com.ysdrzp.model.Account;
 import com.ysdrzp.model.QueryVo;
 import com.ysdrzp.model.User;
 import java.util.List;

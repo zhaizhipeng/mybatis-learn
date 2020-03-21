@@ -2,6 +2,7 @@ package com.ysdrzp.dao;
 
 import com.ysdrzp.model.Account;
 import com.ysdrzp.model.AccountUser;
+import com.ysdrzp.model.User;
 
 import java.util.List;
 
@@ -21,4 +22,11 @@ public interface IAccountDao {
      * @return
      */
     List<Account> findAll();
+
+    /**
+     * 根据用户 id 查询账户信息
+     * @param uid
+     * @return
+     */
+    List<Account> findByUid(Integer uid);
 }

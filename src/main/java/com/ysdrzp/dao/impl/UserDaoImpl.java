@@ -1,6 +1,7 @@
 package com.ysdrzp.dao.impl;
 
 import com.ysdrzp.dao.IUserDao;
+import com.ysdrzp.model.Account;
 import com.ysdrzp.model.QueryVo;
 import com.ysdrzp.model.User;
 import org.apache.ibatis.session.SqlSession;
@@ -23,7 +24,7 @@ public class UserDaoImpl implements IUserDao {
         session.close();
         return users;
     }
-    
+
     @Override
     public User findById(Integer userId) {
         SqlSession session = factory.openSession();
